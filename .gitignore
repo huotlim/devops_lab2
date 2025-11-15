@@ -4,5 +4,16 @@ node_modules/
 # Ignore logs
 *.log
 
-# Optional: ignore Docker files you don’t want
+# Optional: ignore Docker files you don't want
 *.env
+
+# Vercel
+.vercel
+
+# Coverage reports
+coverage/
+.nyc_output/
+
+# Lock files
+yarn.lock
+package-lock.json

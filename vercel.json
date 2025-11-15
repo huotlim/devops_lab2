@@ -1,0 +1,33 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "src/index.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "src/static/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/static/(.*)",
+      "dest": "/src/static/$1"
+    },
+    {
+      "src": "/api/(.*)",
+      "dest": "/src/index.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/src/static/index.html"
+    }
+  ],
+  "env": {
+    "MYSQL_HOST": "@mysql_host",
+    "MYSQL_USER": "@mysql_user", 
+    "MYSQL_PASSWORD": "@mysql_password",
+    "MYSQL_DB": "@mysql_db"
+  }
+}

@@ -1,33 +1,28 @@
 {
-  "name": "101-app",
+  "name": "todo-app",
   "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT",
+  "description": "Todo application for Docker getting started guide",
+  "main": "src/index.js",
   "scripts": {
-    "prettify": "prettier -l --write \"**/*.js\"",
-    "test": "jest",
-    "dev": "nodemon -L src/index.js"
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "build": "echo 'No build step required'",
+    "lint": "eslint src/",
+    "test": "mocha"
   },
   "dependencies": {
-    "express": "^4.18.2",
-    "mysql2": "^2.3.3",
-    "sqlite3": "^5.1.2",
-    "uuid": "^9.0.0",
-    "wait-port": "^1.0.4"
-  },
-  "resolutions": {
-    "ansi-regex": "5.0.1"
-  },
-  "prettier": {
-    "trailingComma": "all",
-    "tabWidth": 4,
-    "useTabs": false,
-    "semi": true,
-    "singleQuote": true
+    "express": "^4.18.0",
+    "sqlite3": "^5.1.0",
+    "mysql2": "^3.6.0",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
-    "jest": "^29.3.1",
-    "nodemon": "^2.0.20",
-    "prettier": "^2.7.1"
+    "nodemon": "^3.0.0",
+    "eslint": "^8.0.0",
+    "mocha": "^10.0.0",
+    "nyc": "^15.1.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
   }
 }
