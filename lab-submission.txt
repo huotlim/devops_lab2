@@ -1,0 +1,44 @@
+DOCKER CHEAT SHEET
+
+1. Containerize App : Put the app into a Docker image to run anywhere
+-------------------
+Build image and run container:
+docker build -t app .
+docker run -p 3000:3000 app
+
+2. Update App : Put the app into a Docker image to run anywhere
+-------------
+After code changes, rebuild and run:
+docker build -t myapp .
+docker run -p 3000:3000 app
+
+3. Share App : Push the Docker image to Docker Hub
+------------
+Push image to Docker Hub:
+docker login
+docker tag myapp username/app:latest
+docker push username/myapp:latest
+
+4. Persist Database : Use volumes so data stays even if the container is removed.
+-------------------
+Use a volume to keep data:
+docker run -v mydbdata:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root -d mysql
+
+5. Live Code Updates : Use bind mounts to connect host folders to containers.
+-------------------
+Use bind mount to see changes instantly:
+docker run -v $(pwd):/app -p 3000:3000 myapp
+
+6. Multi-container Apps
+-----------------------
+Run app + DB together:
+docker network create mynetwork
+docker run --name db --network mynetwork -e MYSQL_ROOT_PASSWORD=root -d mysql
+docker run --name app --network mynetwork -p 3000:3000 myapp
+
+7. Docker Compose
+-----------------
+Start multiple containers with one command:
+docker-compose up
+docker-compose down
+
